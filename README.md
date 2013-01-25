@@ -8,12 +8,12 @@ Being a Beta site, there were many limitations, not least the aesthetics of the 
 
 I'm looking to build the next generation site - currently deployed to <a href="http://opensource.cloudplalyists.com">http://opensource.cloudplaylists.com</a>
 
-I've put together the skeleton HTML for the main Playlist page, Profile Page and a mockup of how an embeddable Playlist widget could look.
+I've put together the skeleton HTML for the main Playlist page, Profile Page and a mockup of how an embeddable Playlist widget could look, these are 
+contained within this repository.
 
 An example playlist url where this HTML is currenty deployed can be found below:
 
 <a href="http://opensource.cloudplaylists.com/michaellavelle/january_2013">http://opensource.cloudplaylists.com/michaellavelle/january_2013</a>
-
 
 I'm wondering if any front-end developers would like to get involved, and help design the look and feel of the 
 next generation Playlist sharing site?
