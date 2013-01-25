@@ -22,7 +22,7 @@ Ideally the look and feel would be similar in style to the previous site at <a h
 
 If you'd like to get involved, please fork this repository and get in touch.
 
-Any pull requests that are selected to be pulled back into this main repository will make their way to the opensource.cloudplaylists.com in the initial instance, to be followed
+Any pull requests that are selected to be pulled back into this main repository will make their way to opensource.cloudplaylists.com in the initial instance, to be followed
 by a deployment to the main CloudPlaylists.com site once we upgrade to this new version.
 
 Full credit will be given to anyone involved on the main home page and on the thousands of playlist pages.
