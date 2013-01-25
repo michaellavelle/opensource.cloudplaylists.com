@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="cloudplaylists.css">
+ <script type="text/javascript" src="https://w.soundcloud.com/player/api.js "></script>
+</head>
+<body>
+<!-- START PLAYER CONTAINER JSP -->
+
+<div id="player">
+	
+	<h2>January 2013 by <a href="profile.html">michaellavelle</a></h2>
+	<!--  START PLAYER JSP -->
+	<div id="sc">
+		<iframe id="sc-widget" width="30%" height="140" scrolling="no"
+		frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fsoundcloud.com%2Fmonsieuradi%2Fyou-feat-aaron-alexis&amp;show_artwork=true&amp;auto_play=false"></iframe>
+
+		<p>
+			<a href="javascript:prevTrack();">Prev Track</a>
+			 <a href="javascript:nextTrack();">Next Track</a>
+		</p>
+	</div>
+
+<!--  END PLAYER JSP-->
+</div>
+<!-- END PLAYER CONTAINER -->
+
+<!-- START PLAYER STATUS -->
+
+<div id="playerStatus">
+</div>
+<!-- END PLAYER STATUS -->
+
+<!-- START PLAYLIST CONTAINER -->
+
+
+<div id="body" style="text-align: left; width: 30%; float: left;">
+<!-- START PLAYLIST -->
+	
+
+	<table class="Playlist">
+
+		<tr id="r0">
+			<td class="segmentListItem" id="n0" ">1</td>
+			<td class="segmentListItem" id="p0">You feat. Aaron Alexis</td>
+			<td><a href="javascript:playTrack(0,'http%3A%2F%2Fsoundcloud.com%2Fmonsieuradi%2Fyou-feat-aaron-alexis');">Play</a></td>
+			<td><input onclick="deleteTrack(0)" type="submit" value="x"></td>
+		</tr>
+		<tr id="r1">
+			<td class="segmentListItem" id="n1" ">2</td>
+			<td class="segmentListItem" id="p1">Solange - Losing You (Cyril Hahn Remix)</td>
+			<td><a href="javascript:playTrack(1,'http%3A%2F%2Fsoundcloud.com%2Fcyrilhahn%2Fsolange-losing-you-cyril-hahn');">Play</a></td>
+			
+			<td><input onclick="deleteTrack(1)" type="submit" value="x"></td>
+		</tr>
+		<tr id="r2">
+			<td class="segmentListItem" id="n2" ">3</td>
+			<td class="segmentListItem" id="p2">Alpines - Chances (Cyril Hahn Remix)</td>
+			<td><a href="javascript:playTrack(2,'http%3A%2F%2Fsoundcloud.com%2Falpines%2Fchances-cyril-hahn');">Play</a></td>
+			<td><input onclick="deleteTrack(2)" type="submit" value="x"></td>
+		</tr>
+
+		<tr id="r3">
+			<td class="segmentListItem" id="n3" ">4</td>
+			<td class="segmentListItem" id="p3" draggable="true">Destiny&#039;s Child - Say My Name (Cyril Hahn Remix)</td>
+			<td><a href="javascript:playTrack(3,'http%3A%2F%2Fsoundcloud.com%2Fcyrilhahn%2Fdestinys-child-say-my-name');">Play</a></td>
+			<td><input onclick="deleteTrack(3)" type="submit" value="x"></td>
+		</tr>
+
+		<tr id="r4">
+			<td class="segmentListItem" id="n4" ">5</td>
+			<td class="segmentListItem" id="p4" draggable="true">Monsieur Adi - Coming Back To Life (Demo)</td>
+			<td><a href="javascript:playTrack(4,'http%3A%2F%2Fsoundcloud.com%2Fkarmaartists%2Fmonsieur-adi-coming-back-to');">Play</a></td>
+			<td><input onclick="deleteTrack(4)" type="submit" value="x"></td>
+		</tr>
+
+	</table>
+
+	<!-- Temporary hack to add space - remove when using CSS -->	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+
+<!-- END PLAYLIST -->
+</div>
+<!-- END PLAYLIST CONTAINER -->
+</body>
+
+
+<script type="text/javascript">
+
+// Start Chooser JS
+
+	function showLoading(message)
+	{
+		document.getElementById("loadedMessage").innerHTML = '';
+		document.getElementById('loadingMessage').innerHTML =message;
+		document.getElementById('rsContainer').className='';
+		window.setTimeout(hideStatus,3000);
+	}
+
+// End Chooser JS
+
+// Start Results Status JS
+
+	function hideStatus()
+	{
+		document.getElementById("loadedMessage").innerHTML = '';
+		document.getElementById('loadingMessage').innerHTML = '';
+	}
+
+// End Results Status JS
+
+// Start Player Container JS
+
+	function playTrack(trackNumberToPlay, encodedUrl) 
+	{
+
+		trackNumber = trackNumberToPlay;
+		
+		var widgetIframe = document.getElementById('sc-widget');
+		
+		// Stop an error message being displayed while player is loaded by hiding player iframe		
+		widgetIframe.height=0;
+		
+		widgetIframe.src = 'http://w.soundcloud.com/player/?url=' + encodedUrl + '&amp;show_artwork=true&amp;auto_play=true';
+		
+		// Redisplay player iFrame on player has loaded
+		widgetIframe.height=160;
+		
+		// Set the selected track CSS by clearing the style of all rows and setting the CSS of the selected track
+		for (var i = 0; i < getUrls().length; i++)
+		{
+			document.getElementById("r" + i).className="";
+		}
+
+		document.getElementById("r" + trackNumber).className="current";
+
+		// Bind the FINISH event to the player - a bug with SoundCloud means that this isn't working currently
+		var widget = SC.Widget(widgetIframe);
+		widget.bind(SC.Widget.Events.FINISH, nextTrack);
+
+	}
+
+// End Player Container JS
+
+// Start Player Status JS
+
+	function showPlayerStatus(status)
+	{
+		document.getElementById("playerStatus").innerHTML='<center>' + status + '</center>';
+		document.getElementById("playerStatus").className="";
+		window.setTimeout(hidePlayerStatus,2000);
+	}
+
+	function hidePlayerStatus()
+	{
+		document.getElementById("playerStatus").innerHTML='';
+	}
+
+// End Player Status JS
+
+	function getUrls()
+	{
+		return ["http%3A%2F%2Fsoundcloud.com%2Fmonsieuradi%2Fyou-feat-aaron-alexis","http%3A%2F%2Fsoundcloud.com%2Fcyrilhahn%2Fsolange-losing-you-cyril-hahn","http%3A%2F%2Fsoundcloud.com%2Falpines%2Fchances-cyril-hahn","http%3A%2F%2Fsoundcloud.com%2Fcyrilhahn%2Fdestinys-child-say-my-name","http%3A%2F%2Fsoundcloud.com%2Fkarmaartists%2Fmonsieur-adi-coming-back-to"];
+	}
+
+// End Player Status JS
+
+// Start Local Playlist JS
+
+	var trackNumber = 0;
+
+	function play()
+	{
+		var widgetIframe = document.getElementById('sc-widget');
+		var widget = SC.Widget(widgetIframe);
+		widget.play();
+		// Bind the FINISH event to the player - a bug with SoundCloud means that this isn't working currently
+		widget.bind(SC.Widget.Events.FINISH, nextTrack);
+	}
+	function nextTrack() {
+	
+		 var maxIndex = getUrls().length - 1;
+		 if (trackNumber < maxIndex)
+		 {
+			trackNumber++;
+		 }
+		 playTrack(trackNumber,getUrls()[trackNumber]);
+	}
+
+	function prevTrack() {
+		 if (trackNumber > 0)
+		 {
+			trackNumber--;
+		 }
+		 playTrack(trackNumber,getUrls()[trackNumber]);
+	}
+
+	function deleteTrack(trackIndex)
+	{
+		// For demo purposes
+		alert('Delete track requested');
+	}
+
+
+	// Bind the FINISH event to the first track on the player - a bug with SoundCloud means that this isn't working currently
+	var widgetIframe = document.getElementById('sc-widget');
+	var widget = SC.Widget(widgetIframe);
+	widget.bind(SC.Widget.Events.FINISH, nextTrack);
+
+	// Set the CSS of the first track to be selected
+	document.getElementById('r0').className="current";
+
+	// End Local Playlist JS
+
+</script>
+
+
+</html>
