@@ -1,6 +1,8 @@
 opensource.cloudplaylists.com
 =============================
 
+( Please see https://github.com/cloudplaylists/opensource.cloudplaylists.com for the latest version of this repository )
+
 Since I launched <a href="http://cloudplaylists.com">the CloudPlaylists Beta Site</a> over 1500 people created accounts and 
 have used the site to create over 2000 playlists between them.
 
@@ -20,7 +22,7 @@ next generation Playlist sharing site?
 
 Ideally the look and feel would be similar in style to the previous site at <a href="http://cloudplaylists.com">CloudPlaylists.com</a>.
 
-If you'd like to get involved, please fork this repository and get in touch.
+If you'd like to get involved, please fork https://github.com/cloudplaylists/opensource.cloudplaylists.com and get in touch.
 
 Any pull requests that are selected to be pulled back into this main repository will make their way to opensource.cloudplaylists.com in the initial instance, to be followed
 by a deployment to the main CloudPlaylists.com site once we upgrade to this new version.
